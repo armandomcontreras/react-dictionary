@@ -1,4 +1,19 @@
 .word-card {
-    border: 3px ridge black;
-    border-radius: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+    margin: 20px;
+    padding: 10px;
+    background: lightgoldenrodyellow;
+    display: inline-block;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-back {
+    display: none;
 }
