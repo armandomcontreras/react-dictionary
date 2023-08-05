@@ -10,8 +10,7 @@ export default function WordCard({front, back}) {
             <div className="card-front">English: {front}</div> :
             <div className="card-back">German: {back}</div>;
 
-    const handleClick = (/* e*/) => {
-      //  e.preventDefault(); // in case of form fields
+    const handleClick = () => {
         setFront(!isFront);
     };
 
