@@ -1,6 +1,10 @@
-import './App.css';
-import WordCard from './components/WordCard/WordCard';
 import { useState } from 'react';
+
+import WordCard from './components/WordCard/WordCard';
+import WordForm from './components/WordCard/WordForm/WordForm';
+import CardsContainer from './components/CardsContainer/CardsContainer';
+
+import './App.css';
 
 function App() {
   const [words, setWords] = useState([
@@ -26,26 +30,9 @@ function App() {
         Dictionary App
       </header>
       <main>
-        <section className="card-form">
-          <h2>New Card</h2>
-          <form action="#" method="GET">
-            <div className="form-row">
-              <label>
-                English:
-                <input type ="text" name="en" placeholder="English"/>
-              </label>
-            </div>
-            <div className="form-row">
-              <label>
-                German:
-                <input type ="text" name="de" placeholder="German"/>
-              </label>
-            </div>
-          </form>
-        </section>
-        <section className="cards-container">
-          {cardList}
-          </section>
+        <WordForm />
+        <CardsContainer cardList={cardList} />
+     
       </main>
     </div>
   );
