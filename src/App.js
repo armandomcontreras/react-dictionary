@@ -20,6 +20,11 @@ function App() {
     setWords(newWords);
   }
 
+  const deleteWord = (front) => {
+    const newWords = words.filter(word => word.front !== front);
+    setWords(newWords);
+  }
+
 return (
     <div className="App">
       <header className="App-header">
@@ -27,7 +32,7 @@ return (
       </header>
       <main>
         <WordForm addWord={addWord} />
-        <CardsContainer words={words} />
+        <CardsContainer words={words} deleteWord={deleteWord} />
       </main>
     </div>
   );
