@@ -1,56 +1,59 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './WordForm.css';
 
-const WordForm = ({ addWord }) => {
-    const enRef = useRef(null);
-    const deRef = useRef(null);
-    const handleSubmit = (e) => {
-        e.preventDefault();
+class WordForm extends React.Component {
+  frontRef = React.createRef()
+  backRef= React.createRef()
+  handleSubmit = (e) => {
+    e.preventDefault();
 
-        const enField = enRef.current;
-        const deField = deRef.current;
-
-        
-        const enValue = enField.value;
-        const deValue = deField.value;
-
-        enField.value = '';
-        deField.value = '';
-
-        alert(`${enValue} - ${deValue}`);
-        addWord(enValue, deValue);
+    const enField = this.frontRef.current;
+    const deField = this.backRef.current;
     
-    }
-  return (
-    <section className="card-form">
-    <h2>New Card</h2>
-    <form action="#" method="GET" onSubmit={handleSubmit}>
-      <div className="form-row">
-        <label>
-          English:
-                      <input
-                          type="text"
-                          name="en"
-                          placeholder="English"
-                          ref={enRef} />
-        </label>
-      </div>
-      <div className="form-row">
-        <label>
-          German:
-                      <input
-                          type="text"
-                          name="de"
-                          placeholder="German" 
-                          ref={deRef} />
-        </label>
-      </div>
-      <div className="form-row">
-        <button type="submit">Add Word</button>
-      </div>
-    </form>
-  </section>
-  )
+    
+    const enValue = enField.value;
+    const deValue = deField.value;
+
+    enField.value = '';
+    deField.value = '';
+
+ 
+    this.props.addWord(enValue, deValue);
+
+}
+  render() {
+    return (
+      <section className="card-form">
+      <h2>New Card</h2>
+      <form action="#" method="GET" onSubmit={this.handleSubmit}>
+        <div className="form-row">
+          <label>
+            English:
+                        <input
+                            type="text"
+                            name="en"
+                placeholder="English"
+              ref={this.frontRef} />
+          </label>
+        </div>
+        <div className="form-row">
+          <label>
+            German:
+                        <input
+                            type="text"
+                            name="de"
+                placeholder="German" 
+              ref={this.backRef} />
+          </label>
+        </div>
+        <div className="form-row">
+          <button type="submit">Add Word</button>
+        </div>
+      </form>
+    </section>
+    )
+
+  }
 }
 
 export default WordForm;

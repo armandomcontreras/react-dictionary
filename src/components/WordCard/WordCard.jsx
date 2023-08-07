@@ -1,29 +1,32 @@
-import { useState } from 'react';
+import React, { Component } from 'react';
 import './WordCard.css';
 
-
-export default function WordCard({front, back, deleteWord}) {
-    const [isFront, setFront] = useState(true);
-
-    const cardContent =
-        isFront ?
-            <div className="card-front">English: {front}</div> :
-            <div className="card-back">German: {back}</div>;
-    
-    const handleFlip = () => {
-        setFront(!isFront);
+export default class WordCard extends Component {
+    state = {
+        isFront: true
+    }
+    handleFlip = () => {
+        this.setState({ isFront: !this.state.isFront });
     };
 
-    const handleDelete = (e) => {
+    handleDelete = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        deleteWord(front);
+        this.props.deleteWord(this.props.front);
     }
 
-    return (
-        <div className="word-card" onClick={handleFlip}>
-            <span className="delete-card" onClick={handleDelete}>X</span>
-            {cardContent}
-        </div>
-    )
+    render() {
+        const cardContent =
+        this.state.isFront ?
+            <div className="card-front">English: {this.props.front}</div> :
+            <div className="card-back">German: {this.props.back}</div>;
+    
+        return (
+            <div className="word-card" onClick={this.handleFlip}>
+                <span className="delete-card" onClick={this.handleDelete}>X</span>
+                {cardContent}
+            </div>
+        )
+    }
+
 }
