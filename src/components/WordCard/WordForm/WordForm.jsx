@@ -1,7 +1,7 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 import './WordForm.css';
 
-const WordForm = () => {
+const WordForm = ({ addWord }) => {
     const enRef = useRef(null);
     const deRef = useRef(null);
     const handleSubmit = (e) => {
@@ -18,6 +18,7 @@ const WordForm = () => {
         deField.value = '';
 
         alert(`${enValue} - ${deValue}`);
+        addWord(enValue, deValue);
     
     }
   return (

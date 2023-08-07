@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './WordCard.css';
 
 
-export default function WordCard({ front, back }) {
+export default function WordCard({front, back}) {
     const [isFront, setFront] = useState(true);
 
     const cardContent =
@@ -16,6 +16,7 @@ export default function WordCard({ front, back }) {
 
     return (
         <div className="word-card" onClick={handleClick}>
+            <span className="delete-card">X</span>
             {cardContent}
         </div>
     )

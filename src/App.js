@@ -13,7 +13,12 @@ function App() {
     { front: 'taxi', back: 'Taxi' },
     { front: 'paper', back: 'Papier' },
     { front: 'square', back: 'Platz' },
- ]);
+  ]);
+  
+  const addWord = (front, back) => {
+    const newWords = [...words, { front, back }];
+    setWords(newWords);
+  }
 
 return (
     <div className="App">
@@ -21,7 +26,7 @@ return (
         Dictionary App
       </header>
       <main>
-        <WordForm />
+        <WordForm addWord={addWord} />
         <CardsContainer words={words} />
       </main>
     </div>
